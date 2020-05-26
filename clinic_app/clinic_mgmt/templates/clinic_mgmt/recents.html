@@ -1,0 +1,10 @@
+{% extends "clinic_mgmt/header.html" %}
+
+{% block content %}
+    {% for person in object_list %}
+        <h5>
+            {{ person.createdDateTime|date:"Y-m-d" }}
+            <a href="clinic_mgmt/{{ person.ID }}">{{ person.ID }}</a>
+        </h5>
+    {% endfor %}
+{% endblock %}  
