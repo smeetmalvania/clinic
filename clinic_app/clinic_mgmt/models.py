@@ -37,4 +37,34 @@ class Person(models.Model):
 
     def __str__(self):
         name = self.firstName+' '+self.middleName+' '+self.lastName
-        return name + ' Case # ' + self.caseID 
+        return name + ' Case # ' + str(self.id)
+
+class Visit(models.Model):
+
+    # case ID
+    caseid = models.ForeignKey(Person, on_delete=models.CASCADE)
+
+    # Visit type
+    VISIT_CHOICES = [
+        ('First Consultation', 'First Consultation'),
+        ('Routine Checkup', 'Routine Checkup'),
+        ('Medicine Only', 'Medicine Only')
+    ]
+    visit_type = models.CharField(max_length=20, choices=VISIT_CHOICES, default='Routine Checkup')
+
+    # Amount Due
+    amt_due = models.IntegerField()
+    PAYMENT_CHOICES = [
+        ('Cash', 'Cash'),
+        ('Credit', 'Credit')
+    ]
+    payment_method = models.CharField(max_length=6, choices=PAYMENT_CHOICES, default='Cash')
+    visitDate = models.DateField(auto_now=True)
+    visitDateTime = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        dt = str(self.visitDateTime)
+        # person = self.caseid.Person
+        name = self.caseid.firstName+' '+self.caseid.middleName+' '+self.caseid.lastName
+        return  name + ' visited on ' + dt 
+    

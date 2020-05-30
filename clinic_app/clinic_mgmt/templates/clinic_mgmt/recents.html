@@ -2,9 +2,9 @@
 
 {% block content %}
     {% for person in object_list %}
-        <h5>
-            {{ person.createdDateTime|date:"Y-m-d" }}
-            <a href="clinic_mgmt/{{ person.ID }}">{{ person.ID }}</a>
-        </h5>
+            <p>{{ person.firstname }}  
+                {{ person.middlename }}
+                {{ person.lastname }}
+                - {{ person.createdDateTime|date:"Y-m-d" }}</p>
     {% endfor %}
 {% endblock %}  
