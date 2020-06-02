@@ -13,7 +13,7 @@
 
     <form class="site-form" method="POST" action="/visit_log/">
         {% csrf_token %}
-        <div class="form-group">
+        <div class="form-group ">
             {{form.as_p}}
         </div>
             <button type="submit" class="btn btn-success mb-2">Submit Visit</button>

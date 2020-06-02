@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
-from .forms import VisitSearchForm, LogVisitForm
+from .forms import VisitSearchForm, LogVisitForm, NewPatientForm
 from .models import Person
 
 def index(request):
@@ -62,3 +62,12 @@ def visit_log(request):
             return render(request, 'clinic_mgmt/basic.html')
     # GET request
     return render(request, 'clinic_mgmt/basic.html')
+
+def new_patient(request):
+    if request.method == "POST":
+        form = NewPatientForm(request.POST)
+        if form.is_valid():
+            person = form.save()
+            return render(request, 'clinic_mgmt/basic.html')
+    form = NewPatientForm
+    return render(request, 'clinic_mgmt/new_patient.html', {'form': form})

@@ -1,0 +1,104 @@
+{% extends "clinic_mgmt/header.html" %}
+
+{% block content %}
+<h4>New Patient Entry</h4>
+<br>
+    <form class="site-form" method="POST">
+        {% csrf_token %}
+        <div class="form-group ">
+            {{ form.non_field_errors }}
+            <div class="row row-no-gutters">
+                <div class="col">
+                    <div class="fieldWrapper form-group">
+                        {{ form.firstName.errors }}
+                        <label for="{{ form.firstName.id_for_label }}" class="col-sm-4 col-form-label">First Name:</label>
+                        {{ form.firstName }}
+                    </div>
+                    <div class="fieldWrapper form-group">
+                        {{ form.middleName.errors }}
+                        <label for="{{ form.middleName.id_for_label }}" class="col-sm-4 col-form-label">Middle Name:</label>
+                        {{ form.middleName }}
+                    </div>
+                    <div class="fieldWrapper form-group">
+                        {{ form.lastName.errors }}
+                        <label for="{{ form.lastName.id_for_label }}" class="col-sm-4 col-form-label">Last Name:</label>
+                        {{ form.lastName }}
+                    </div> 
+                    <div class="fieldWrapper form-group">
+                        {{ form.aadhar.errors }}
+                        <label for="{{ form.aadhar.id_for_label }}" class="col-sm-4 col-form-label">Aadhar Card:</label>
+                        {{ form.aadhar }}
+                    </div>
+                    <div class="fieldWrapper form-group">
+                        {{ form.gender.errors }}
+                        <label for="{{ form.gender.id_for_label }}" class="col-sm-4 col-form-label">Gender:</label>
+                        {{ form.gender }}
+                    </div>
+                    <div class="fieldWrapper form-group">
+                        {{ form.birthDate.errors }}
+                        <label for="{{ form.birthDate.id_for_label }}" class="col-sm-4 col-form-label">Birth Date:</label>
+                        {{ form.birthDate }}
+                    </div>
+                    <div class="fieldWrapper form-group">
+                        {{ form.referral_type.errors }}
+                        <label for="{{ form.referral_type.id_for_label }}" class="col-sm-4 col-form-label">Referred By:</label>
+                        {{ form.referral_type }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="fieldWrapper form-group">
+                        {{ form.address_line1.errors }}
+                        <label for="{{ form.address_line1.id_for_label }}" class="col-sm-4 col-form-label">Address Line 1:</label>
+                        {{ form.address_line1 }}
+                    </div>
+                    <div class="fieldWrapper form-group">
+                        {{ form.address_line2.errors }}
+                        <label for="{{ form.address_line2.id_for_label }}" class="col-sm-4 col-form-label">Address Line 2:</label>
+                        {{ form.address_line2 }}
+                    </div>
+                    <div class="fieldWrapper form-group">
+                        {{ form.address_line3.errors }}
+                        <label for="{{ form.address_line3.id_for_label }}" class="col-sm-4 col-form-label">Address Line 3:</label>
+                        {{ form.address_line3 }}
+                    </div>
+                    <div class="fieldWrapper form-group">
+                        {{ form.city.errors }}
+                        <label for="{{ form.city.id_for_label }}" class="col-sm-4 col-form-label">City:</label>
+                        {{ form.city }}
+                    </div>
+                    <div class="fieldWrapper form-group">
+                        {{ form.state.errors }}
+                        <label for="{{ form.state.id_for_label }}" class="col-sm-4 col-form-label">State:</label>
+                        {{ form.state }}
+                    </div>
+                    <div class="fieldWrapper form-group">
+                        {{ form.country.errors }}
+                        <label for="{{ form.country.id_for_label }}" class="col-sm-4 col-form-label">Country:</label>
+                        {{ form.country }}
+                    </div>
+                    <div class="fieldWrapper form-group">
+                        {{ form.pincode.errors }}
+                        <label for="{{ form.pincode.id_for_label }}" class="col-sm-4 col-form-label">PinCode:</label>
+                        {{ form.pincode }}
+                    </div>
+                </div>
+            </div>
+            <legend class="col-form-label col-sm-4 pt-0">Patient Special Notes: </legend>
+            <div class='row'>
+                <div class="fieldWrapper form-group col-sm-8">
+                    {{ form.note1.errors }}
+                    {{ form.note1 }}
+                </div>
+            </div>
+            <div class='row'>
+                <div class="fieldWrapper form-group col-sm-8">
+                    {{ form.note2.errors }}
+                    <!-- <label for="{{form.note2.id_for_label}}" class=' control-label pull-top'>Note 2:</label> -->
+                    {{ form.note2 }}
+                </div>
+            </div>
+        </div>
+            <button type="submit" class="btn btn-success mb-2">Register New Patient</button>
+    </form>
+<br>
+{% endblock %}

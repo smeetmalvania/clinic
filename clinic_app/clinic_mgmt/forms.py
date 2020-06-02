@@ -1,8 +1,12 @@
 from django import forms
-from .models import Visit
-from django.forms import ModelForm
+from .models import Visit, Person
+from django.forms import ModelForm, widgets
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
+
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 class VisitSearchForm(forms.Form):
     caseid = forms.IntegerField(
@@ -25,3 +29,9 @@ class LogVisitForm(ModelForm):
             'amt_due': _("Amount Due for Visit"),
             'payment_method' : _("Mode of Payment"),
         }
+
+class NewPatientForm(ModelForm):
+    class Meta:
+        model = Person
+        exclude = ['createdDate']
+        widgets = {'birthDate': DateInput()}

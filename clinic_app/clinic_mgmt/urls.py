@@ -12,5 +12,6 @@ urlpatterns = [
     #         template_name = 'clinic_mgmt/recents.html')),
     path('register/', views.register, name="register"),
     path('new_visit/', views.visit_search, name="search"),
-    path('visit_log/', views.visit_log, name="visitlog")
+    path('visit_log/', views.visit_log, name="visitlog"),
+    path('new_patient/', views.new_patient, name='newpatient'),
 ]
