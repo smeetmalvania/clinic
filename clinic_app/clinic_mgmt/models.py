@@ -48,17 +48,20 @@ class Visit(models.Model):
     VISIT_CHOICES = [
         ('First Consultation', 'First Consultation'),
         ('Routine Checkup', 'Routine Checkup'),
-        ('Medicine Only', 'Medicine Only')
+        ('Medicine Only', 'Medicine Only'),
+        ('For Payment', 'For Payment'),
     ]
     visit_type = models.CharField(max_length=20, choices=VISIT_CHOICES, default='Routine Checkup')
 
     # Amount Due
     amt_due = models.IntegerField()
+    amt_paid = models.IntegerField()
     PAYMENT_CHOICES = [
         ('Cash', 'Cash'),
+        ('Transfer', 'Transfer'),
         ('Credit', 'Credit')
     ]
-    payment_method = models.CharField(max_length=6, choices=PAYMENT_CHOICES, default='Cash')
+    payment_method = models.CharField(max_length=8, choices=PAYMENT_CHOICES, default='Cash')
     visitDate = models.DateField(auto_now=True)
     visitDateTime = models.DateTimeField(auto_now=True)
 

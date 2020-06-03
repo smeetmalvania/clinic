@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .forms import VisitSearchForm, LogVisitForm, NewPatientForm
-from .models import Person
+from .models import Person, Visit
 
 def index(request):
     return render(request, 'clinic_mgmt/home.html')
@@ -22,10 +22,17 @@ def visit_search(request):
             try:
                 patient = Person.objects.filter(id=caseid).get(id=caseid)
                 form = LogVisitForm
+                outstanding_amt = 0
+
+                # get outstanding amount due
+                for visit in Visit.objects.filter(caseid_id=caseid):
+                    outstanding_amt += visit.amt_due
+                    outstanding_amt -= visit.amt_paid
                 return render(request, 'clinic_mgmt/new_visit_entry.html', {
                     'caseid': caseid, 
                     'patient': patient,
-                    'form': form
+                    'form': form,
+                    'outstanding_amt': outstanding_amt,
                     })
             except:
                 return render(request, 'clinic_mgmt/notfound.html', {'caseid': caseid})

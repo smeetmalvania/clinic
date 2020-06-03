@@ -8,13 +8,45 @@
     </h6>
     <p> <strong>Name of patient: </strong>{{patient.firstName}} 
         {{patient.middleName}} 
-        {{patient.lastName}} </p>
+        {{patient.lastName}} 
+        <small class='form-text text-muted'>
+            Note: Outstanding amount for individual: {{outstanding_amt}}
+        </small>
+    </p>
 
 
     <form class="site-form" method="POST" action="/visit_log/">
         {% csrf_token %}
         <div class="form-group ">
-            {{form.as_p}}
+            <div class='row'>
+                <div class='col'>
+                    <div class="fieldWrapper form-group">
+                        {{ form.caseid.errors }}
+                        <label for="{{ form.caseid.id_for_label }}" class="col-sm-2 col-form-label">Confirm Case ID:</label>
+                        {{ form.caseid }}
+                    </div>
+                    <div class="fieldWrapper form-group">
+                        {{ form.visit_type.errors }}
+                        <label for="{{ form.visit_type.id_for_label }}" class="col-sm-2 col-form-label">Visit Type:</label>
+                        {{ form.visit_type }}
+                    </div>
+                    <div class="fieldWrapper form-group">
+                        {{ form.amt_due.errors }}
+                        <label for="{{ form.amt_due.id_for_label }}" class="col-sm-2 col-form-label">Amount Due:</label>
+                        {{ form.amt_due }}
+                    </div>
+                    <div class="fieldWrapper form-group">
+                        {{ form.amt_paid.errors }}
+                        <label for="{{ form.amt_paid.id_for_label }}" class="col-sm-2 col-form-label">Amount Paid:</label>
+                        {{ form.amt_paid }}
+                    </div>
+                    <div class="fieldWrapper form-group">
+                        {{ form.payment_method.errors }}
+                        <label for="{{ form.payment_method.id_for_label }}" class="col-sm-2 col-form-label">Payment Method:</label>
+                        {{ form.payment_method }}
+                    </div>
+                </div>
+            </div>
         </div>
             <button type="submit" class="btn btn-success mb-2">Submit Visit</button>
     </form>

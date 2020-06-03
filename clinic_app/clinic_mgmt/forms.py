@@ -22,12 +22,13 @@ class VisitSearchForm(forms.Form):
 class LogVisitForm(ModelForm):
     class Meta:
         model = Visit
-        fields = ['caseid', 'visit_type', 'amt_due', 'payment_method']
+        fields = ['caseid', 'visit_type', 'amt_due', 'amt_paid', 'payment_method']
         labels = {
             'caseid': _("Confirm Case #"),
             'visit_type': _("Visit Type"),
             'amt_due': _("Amount Due for Visit"),
             'payment_method' : _("Mode of Payment"),
+            'amt_paid': ("Amount Paid for Visit")
         }
 
 class NewPatientForm(ModelForm):
@@ -35,3 +36,7 @@ class NewPatientForm(ModelForm):
         model = Person
         exclude = ['createdDate']
         widgets = {'birthDate': DateInput()}
+        
+
+
+
