@@ -14,4 +14,6 @@ urlpatterns = [
     path('new_visit/', views.visit_search, name="search"),
     path('visit_log/', views.visit_log, name="visitlog"),
     path('new_patient/', views.new_patient, name='newpatient'),
+    path('update/', views.update_search, name='updatesearch'),
+    path('update/<id>/', views.update_view, name='updatepatient'),
 ]

@@ -29,8 +29,14 @@
             <li class="nav-item">
               <a class="nav-link" href="/new_visit">New Visit</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/new_patient">New Patient</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Patient Management
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/new_patient">New Patient</a>
+                <a class="dropdown-item" href="/update">Update Patient</a>
+              </div>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -76,28 +82,4 @@
 
 </html>
 
-<!-- <!DOCTYPE html>
-<html lang='en'>
-    <head>
-        <title>New Patient Registry</title>
-        <meta charset='utf-8'/>
-        {% load static %}
-        <link rel='stylesheet' href="{% static 'css/boostrap.min.css' %}" type='text/css'/>
-        <style type="text/css">
-            html,
-            body {
-              height:100%
-            }
-        </style>
-    </head>
-    <body class="body" style="background-color: #f6f6f6;">
-        <div class='navbar'>
-            <nav class="navbar navbar-dark bg-dark">
-                <a class="navbar-brand" href="/clinic_mgmt">Navbar</a>
-            </nav>
-        </div> 
-        <div class="container-fluid" style="min-height: 95%;">
-        </div>
-    </body>
-</html> -->
 

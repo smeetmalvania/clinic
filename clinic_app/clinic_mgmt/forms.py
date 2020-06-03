@@ -37,6 +37,10 @@ class NewPatientForm(ModelForm):
         exclude = ['createdDate']
         widgets = {'birthDate': DateInput()}
         
+class PatientSearchForm(forms.Form):
+    caseid = forms.IntegerField(
+        label="Case ID"
+        )
 
 
 
